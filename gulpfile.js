@@ -33,7 +33,7 @@ const prodReq = function() {
       uglify: require( 'gulp-uglify' )
     }
     injectTarget = gulp.src('./dev/index.html');
-    injectSource = gulp.src(['./vendor/angular/angular.js', './scripts/bundle.min.js', './bundle.min.css'], {read: false, cwd: __dirname + '/dist'})
+    injectSource = gulp.src(['./scripts/bundle.min.js', './bundle.min.css'], {read: false, cwd: __dirname + '/dist'})
   } else {
     null
   }
