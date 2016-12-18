@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html ng-app="itunes">
 
-<head>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular Itunes Practice Exercise</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css">
@@ -14,13 +17,13 @@
     <div class="container">
       <div id="myContainer">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" target="_blank">
             <span class="glyphicon glyphicon-music"></span> DevTunes</a>
         </div>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name">
-            <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
+            <button class="btn btn-primary" ng-click="getSongData(artist)"> Submit </button>
           </div>
         </form>
       </div>

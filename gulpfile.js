@@ -19,7 +19,7 @@ const inject = require('gulp-inject');
 var localEnv = 'dev';
 var prod = {};
 var injectTarget = gulp.src('./dev/index.html');;
-var injectSource = gulp.src(['./vendor/angular/angular.js', './scripts/bundle.js', './bundle.css'], {read: false, cwd: __dirname + '/dist'})
+var injectSource = gulp.src(['./scripts/bundle.js', './bundle.css'], {read: false, cwd: __dirname + '/dist'})
 
 const prodReq = function() {
   if (localEnv === 'production') {
@@ -108,6 +108,9 @@ gulp.task('styles', function(){
     .pipe(plumber({
       errorHandler: onError
     }))
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
     .pipe(cached('css'))
     .pipe(cache(sass({
       errLogToConsole: true
@@ -117,6 +120,10 @@ gulp.task('styles', function(){
     .pipe(remember('css'))
     .pipe(concat('/bundle.css'))
     .pipe(cache(localEnv === 'production' ? prod.rename('bundle.min.css') : gutil.noop()))
+    .pipe(sourcemaps.write( './maps', {
+      includeContent: true,
+      sourceRoot: './dev/'
+    }))
     .pipe(gulp.dest('./dist'))
     .pipe(browserSync.stream())
 });
@@ -181,6 +188,7 @@ gulp.task('serveLocal', function(){
   });
   
   gulp.watch(['dev/styles.scss', './dev/*.{scss,css,sass,less,stylus}', './dev/**/*.{scss,css,sass,less,stylus}'], ['styles']);
+  gulp.watch(['./dev/index.html'], ['index']);
   gulp.watch(['*.html', './dev/*.html', './dev/**/*.html']).on('change', reload);
   gulp.watch(['./dev/*js', './dev/**/*.js'], ['js-watch']);
 
