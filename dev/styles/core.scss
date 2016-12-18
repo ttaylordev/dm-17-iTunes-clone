@@ -1,11 +1,13 @@
 @import 'mixins.scss';
 @import 'variables.scss';
+
 * {
     // outline: 1px solid red;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 .fade {
     position: fixed;
     left: 0;
@@ -18,6 +20,7 @@
     height: 100vh;
     z-index: 90;
 }
+
 .overlay {
     color: black;
     left: 25%;

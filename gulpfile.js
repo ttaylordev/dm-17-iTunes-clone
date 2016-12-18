@@ -85,10 +85,10 @@ gulp.task('vendor', function(){
 })
 
 // inject dependencies
-gulp.task('index', function () {
+gulp.task('index', function() {
   return injectTarget
   .pipe(inject(injectSource))
-    .pipe(gulp.dest('./dist'));
+  .pipe(gulp.dest('./dist'));
 });
 
 // process html
@@ -162,9 +162,9 @@ gulp.task('scripts', function(){
 
 
 // Optimize Images task
-gulp.task('images', function (){
+gulp.task('images', function() {
   return gulp.src('./dev/images/*.{gif,jpg,png}')
-    .pipe(gulp.dest('./dist/images/'))
+  .pipe(gulp.dest('./dist/images/'))
 });
 
 // browser-sync reload
@@ -175,8 +175,8 @@ gulp.task('reload', function(){
 
 // ensure scripts is done running, before reloading from gulp.watch()..
 gulp.task('js-watch', ['scripts'], function (done){
-    browserSync.reload();
-    done();
+  browserSync.reload();
+  done();
 });
 
 gulp.task('serveLocal', function(){
